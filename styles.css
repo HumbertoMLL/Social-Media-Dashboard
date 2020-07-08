@@ -1,4 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Inter', sans-serif;
+  color: #1d2029;
+}
+:root {
+  --lime-green: hsl(163, 72%, 41%);
+  --bright-red: hsl(356, 69%, 56%);
+  --twitter: hsl(195, 100%, 50%);
+  --facebook: hsl(203, 89%, 53%);
+  --instagram-1: hsl(37, 97%, 70%);
+  --instagram-2: hsl(329, 70%, 58%);
+  --tiktok: #fe2c55;
+  --gray: #5f616d;
+}
+.wrapper {
+  padding: 0 30px;
+}
+.grid {
+  display: grid;
+  grid-row-gap: 24px;
+}
+.header {
+  background-color: #f8f9fe;
+  padding-bottom: 100px;
+  border-radius: 0 0 20px 20px;
+  padding-top: 2em;
+}
+.header h1 {
+  margin: 0;
+  font-size: 1.7em;
+}
+.header p {
+  color: var(--gray);
+  margin: 0.5em 0;
+  font-weight: 600;
+  padding-bottom: 1.5em;
+  border-bottom: 2px solid var(--gray);
+}
+.top-cards {
+  margin-top: -50px;
+}
+.card {
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f0f3fa;
+  text-align: center;
+  padding: 1.6em 0;
+  position: relative;
+}
+.card::before {
+  content: '';
+  height: 4px;
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+.card.facebook::before {
+  background-color: var(--facebook);
+}
+.card.twitter::before {
+  background-color: var(--twitter);
+}
+.card.instagram::before {
+  background-image: linear-gradient(
+    to right,
+    var(--instagram-1) 0%,
+    var(--instagram-2) 100%
+  );
+}
+.card.tiktok::before {
+  background-color: var(--tiktok);
+}
+.card-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6f717e;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+.card-title img {
+  margin-right: 4px;
+}
+.card-followers {
+}
+.card-followers-number {
+  font-size: 48px;
+  font-weight: 700;
+}
+.card-followers-title {
+  display: block;
+  text-transform: uppercase;
+  color: var(--gray);
+  letter-spacing: 6px;
+  font-size: 0.75em;
+}
+.card-today {
+  color: var(--lime-green);
+  font-size: 0.7em;
+  font-weight: bold;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-today img {
+  width: 16px;
+  margin-right: 4px;
+}
+
+.overview {
+  margin-top: 2em;
+}
+.card-small {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 2.5em;
+  background-color: #f0f3fa;
+  border-radius: 8px;
+  padding: 1.7em;
+}
+.card-small p {
+  margin: 0;
+}
+.card-small-icon {
+  text-align: right;
+}
+.card-small-views {
+  color: var(--gray);
+  font-weight: bold;
+  font-size: 0.9em;
+}
+.card-small-number {
+  font-weight: bold;
+  font-size: 2.6em;
+  line-height: 0.9em;
+}
+.card-small-percentage {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  color: var(--bright-red);
+  font-size: 0.9em;
+}
+.card-small-percentage span {
+  display: flex;
+  align-items: center;
+}
+.card-small-percentage img {
+  margin-right: 5px;
 }
