@@ -14,6 +14,7 @@ body {
   --instagram-2: hsl(329, 70%, 58%);
   --tiktok: #fe2c55;
   --gray: #5f616d;
+  --cardGray: #f0f3fa;
 }
 .wrapper {
   padding: 0 30px;
@@ -37,15 +38,16 @@ body {
   margin: 0.5em 0;
   font-weight: 600;
   padding-bottom: 1.5em;
-  border-bottom: 2px solid var(--gray);
+  border-bottom: 1px solid var(--gray);
 }
 .top-cards {
   margin-top: -50px;
+  margin-bottom: 3em;
 }
 .card {
   border-radius: 8px;
   overflow: hidden;
-  background: #f0f3fa;
+  background: var(--cardGray);
   text-align: center;
   padding: 1.6em 0;
   position: relative;
@@ -114,7 +116,10 @@ body {
 }
 
 .overview {
-  margin-top: 2em;
+  padding-bottom: 2em;
+}
+h2 {
+  color: var(--gray);
 }
 .card-small {
   display: grid;
@@ -153,4 +158,68 @@ body {
 }
 .card-small-percentage img {
   margin-right: 5px;
+}
+
+@media screen and (min-width: 520px) {
+  body {
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 25px;
+  }
+  .wrapper {
+    max-width: 1440px;
+    margin: auto;
+  }
+}
+@media screen and (min-width: 720px) {
+  body {
+  }
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 25px;
+  }
+  .wrapper {
+    max-width: 1440px;
+    margin: auto;
+  }
+}
+@media screen and (min-width: 1024px) {
+  body {
+  }
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 25px;
+  }
+  .wrapper {
+    max-width: 1440px;
+    margin: auto;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1d2029;
+    color: white;
+  }
+  :root {
+    --cardGray: #252b43;
+    --gray: #8088ad;
+  }
+
+  .header {
+    background-color: #1d2029;
+  }
+  .card-title {
+    color: var(--gray);
+  }
+  .card-followers-title {
+    color: #8088ad;
+  }
+  .card-small {
+    background-color: #252b43;
+  }
+  .card-small-views {
+    color: #8088ad;
+  }
 }
