@@ -3,7 +3,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', sans-serif;
-  color: #1d2029;
+  color: var(--baseColor);
+  background-color: var(--baseBackground);
 }
 :root {
   --lime-green: hsl(163, 72%, 41%);
@@ -14,6 +15,13 @@ body {
   --instagram-2: hsl(329, 70%, 58%);
   --tiktok: #fe2c55;
   --gray: #5f616d;
+  --cardGray: #f0f3fa;
+  --cardTitle: #6f717e;
+  --lightGray: #f8f9fe;
+  --baseBackground: #fff;
+  --baseColor: #1d2029;
+  --switchSpinner: white;
+  --switch: #5f616d;
 }
 .wrapper {
   padding: 0 30px;
@@ -22,30 +30,65 @@ body {
   display: grid;
   grid-row-gap: 24px;
 }
+.dark-mode {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1em;
+}
+.checkbox {
+  display: none;
+}
+.checkbox:checked ~ .switch::before {
+  transform: translateX(0px);
+}
+.switch {
+  height: 40px;
+  display: block;
+  border-radius: 20px;
+  background: var(--switch);
+  width: 80px;
+  padding: 5px;
+  cursor: pointer;
+  box-sizing: border-box;
+  user-select: none;
+}
+.switch::before {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--switchSpinner);
+  transform: translateX(40px);
+  transition: 0.3s;
+  will-change: transform;
+}
+
 .header {
-  background-color: #f8f9fe;
+  background-color: var(--lightGray);
   padding-bottom: 100px;
   border-radius: 0 0 20px 20px;
-  padding-top: 2em;
+  padding-top: 1em;
 }
 .header h1 {
   margin: 0;
   font-size: 1.7em;
 }
-.header p {
+.header-title {
   color: var(--gray);
   margin: 0.5em 0;
   font-weight: 600;
   padding-bottom: 1.5em;
-  border-bottom: 2px solid var(--gray);
+  border-bottom: 1px solid var(--gray);
 }
 .top-cards {
   margin-top: -50px;
+  margin-bottom: 3em;
 }
 .card {
   border-radius: 8px;
   overflow: hidden;
-  background: #f0f3fa;
+  background: var(--cardGray);
   text-align: center;
   padding: 1.6em 0;
   position: relative;
@@ -79,15 +122,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #6f717e;
+  color: var(--cardTitle);
   font-size: 0.9em;
   font-weight: bold;
 }
 .card-title img {
   margin-right: 4px;
 }
-.card-followers {
-}
+
 .card-followers-number {
   font-size: 48px;
   font-weight: 700;
@@ -114,13 +156,16 @@ body {
 }
 
 .overview {
-  margin-top: 2em;
+  padding-bottom: 2em;
+}
+h2 {
+  color: var(--gray);
 }
 .card-small {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-row-gap: 2.5em;
-  background-color: #f0f3fa;
+  background-color: var(--cardGray);
   border-radius: 8px;
   padding: 1.7em;
 }
@@ -131,7 +176,7 @@ body {
   text-align: right;
 }
 .card-small-views {
-  color: var(--gray);
+  color: var(--cardTitle);
   font-weight: bold;
   font-size: 0.9em;
 }
@@ -153,4 +198,78 @@ body {
 }
 .card-small-percentage img {
   margin-right: 5px;
+}
+
+@media screen and (min-width: 520px) {
+  body {
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 25px;
+  }
+  .wrapper {
+    max-width: 1440px;
+    margin: auto;
+  }
+}
+@media screen and (min-width: 720px) {
+  body {
+  }
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 25px;
+  }
+  .wrapper {
+    max-width: 1440px;
+    margin: auto;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 25px;
+  }
+  .header-grid {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+  }
+  .wrapper {
+    max-width: 1440px;
+    margin: auto;
+  }
+  .header-title {
+    border: none;
+  }
+}
+.is-dark-mode {
+  --cardGray: #252b43;
+  --gray: #8088ad;
+  --lightGray: #1d2029;
+  --baseBackground: #1d2029;
+  --baseColor: #fff;
+  --cardTitle: #6f717e;
+  --switchSpinner: #282943;
+  --switch: linear-gradient(to right, #4796d2 0%, #37ce8f 100%);
+}
+.is-light-mode {
+  --gray: #5f616d;
+  --cardGray: #f0f3fa;
+  --cardTitle: #6f717e;
+  --lightGray: #f8f9fe;
+  --baseBackground: #fff;
+  --baseColor: #1d2029;
+  --switchSpinner: white;
+  --switch: #5f616d;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cardGray: #252b43;
+    --gray: #8088ad;
+    --lightGray: #1d2029;
+    --baseBackground: #1d2029;
+    --baseColor: #fff;
+    --cardTitle: #6f717e;
+    --switchSpinner: #282943;
+    --switch: linear-gradient(to right, #4796d2 0%, #37ce8f 100%);
+  }
 }
